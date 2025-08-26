@@ -1,82 +1,87 @@
-# BankSystem
+# Bank System Console Application
 
-## Description
+This is a simple bank system implemented as a C# console application using the .NET Framework. The project allows users to interact with two bank accounts, performing deposits, withdrawals, and transfers between them. The application is designed for educational purposes, demonstrating core Object Oriented Programming (OOP) concepts.
 
-**BankSystem** is an object-oriented C# program that simulates simple banking operations for a single account. It demonstrates key object-oriented and programming techniques:
+## Features
 
-### Applied Techniques & Design Concepts
+- **Deposit money** into an account
+- **Withdraw money** from an account
+- **Transfer money** between two accounts
+- **View account details**
+- **Undo (rollback) transactions** immediately after execution
 
-- **Object-Oriented Design:**  
-  - The `Account` class encapsulates account data (name, balance) and provides methods for deposit, withdrawal, printing account details, and input validation.
-  - The `BankSystem` class contains the application logic and user interface, including the main loop for menu-driven interaction.
+## Object Oriented Programming Concepts Demonstrated
 
-- **Encapsulation:**  
-  - Account details are stored as private instance variables, accessible only through class methods and properties.
+- **Encapsulation**
+  - Data and transaction logic are encapsulated within classes (`Account`, `DepositTransaction`, `WithdrawTransaction`, `TransferTransaction`).
+- **Abstraction**
+  - Complex banking operations are abstracted into simple methods (`Execute`, `Rollback`, `Print`).
+- **Modularity**
+  - Each transaction type is implemented as a separate class, promoting code organization and reuse.
+- **Composition**
+  - `TransferTransaction` is composed of both a `DepositTransaction` and `WithdrawTransaction`.
+- **Information Hiding**
+  - Fields within classes are marked as `private` and exposed via properties and methods.
+- **Constructors**
+  - Objects are initialized with constructors that set up their internal state.
 
-- **Constructor Initialization:**  
-  - The `Account` object is initialized with a name and starting balance.
-
-- **Input Validation:**  
-  - Methods guard against invalid or out-of-range input, using both custom validation and built-in parsing methods.
-
-- **Menu-Driven Interface:**  
-  - Uses an enumeration for menu options and a loop to repeatedly prompt the user for actions (withdraw, deposit, print balance, quit).
-
-- **Transaction Methods:**  
-  - Deposit and withdrawal logic is encapsulated within the `Account` class, including checks for negative amounts and insufficient funds.
-  - All amounts are formatted for display in US currency style.
-
-- **Exception Handling:**  
-  - Robust handling for invalid input and transaction errors, preventing crashes or invalid states.
-
-### Demonstrated Operations
-
-- Withdraw funds from the account.
-- Deposit funds into the account.
-- Print current account details.
-- Quit the program.
-
-The sample implementation operates on a single hardcoded account (`Jim` with a starting balance of `$100.10`), but the structure allows easy extension to manage multiple accounts.
-
----
-
-## Instructions
-
-To run the **BankSystem** program in **Microsoft Visual Studio 2022**, follow these steps:
-
-1. **Clone or Download the Repository**
-   - Download as ZIP or use Git:
-     ```
-     git clone https://github.com/rainool/BankSystem.git
-     ```
-
-2. **Open in Visual Studio 2022**
-   - Launch Visual Studio.
-   - Go to `File` > `Open` > `Project/Solution`.
-   - Navigate to the folder containing `Account.cs` and `BankSystem.cs`.
-   - Open the folder as a project, or create a new C# Console Application and add both files to the project.
-
-3. **Add Source Files to Project**
-   - Ensure both files are included in the `BankSystem` namespace.
-
-4. **Set Startup Object**
-   - Confirm `BankSystem.cs` includes the correct `Main` method and is set as the startup file.
-
-5. **Build and Run**
-   - Press `Ctrl + F5` (or click `Start Without Debugging`) to compile and run.
-   - Interact with the console-based menu to deposit, withdraw, print account details, or quit.
+## Usage Instructions
 
 ### Requirements
 
-- **Microsoft Visual Studio 2022**
-- **.NET 6.0 or later** (recommended)
+- Microsoft Visual Studio 2022
+- .NET Framework (C# Console Application)
+
+### How to Run
+
+1. **Clone or Download** the project files and open the solution in Visual Studio 2022.
+2. **Build and Run** the project. The console UI will appear.
+
+### Program Flow
+
+- On startup, two account holders are created:
+  - `Jim` with a starting balance of `$1025.80`
+  - `Oscar` with a starting balance of `$550.20`
+- You will be repeatedly presented with a menu of options:
+  - Withdraw
+  - Deposit
+  - Print (view account details)
+  - Transfer (between Jim and Oscar)
+  - Quit
+
+### How to Interact
+
+- **Withdraw/Deposit:** Enter the amount when prompted. You can immediately choose to reverse the transaction.
+- **Transfer:** Enter the amount to transfer from Jim's account to Oscar's account. You can immediately choose to reverse the transaction.
+- **Print:** Displays the current account's balance and details.
+- **Quit:** Exits the program.
+
+### Example: Creating Account Holders
+
+Account holders are created in the `Main` function as follows:
+
+```csharp
+Account jimCBA = new Account("Jim", 1025.80);
+Account oscarNAB = new Account("Oscar", 550.20);
+```
+
+### Limitations
+
+- **Only two account holders** are supported (`Jim` and `Oscar`). The system is not designed for dynamic account creation or for handling more than two accounts.
+- Transfers are only possible between these two accounts.
+- Account names and initial balances are hardcoded in the `Main` function.
+- The application is designed for console interaction; there is no graphical user interface.
+- Transaction reversal (rollback) can only be performed immediately after execution and only once per transaction.
+- No persistent storage: All data is kept in memory and lost when the program ends.
+
+## File Structure
+
+- `Account.cs` – Defines the account class and its methods
+- `DepositTransaction.cs` – Handles deposit transactions
+- `WithdrawTransaction.cs` – Handles withdrawal transactions
+- `TransferTransaction.cs` – Handles transfers between accounts
+- `BankSystem.cs` – Main program logic and menu interface
 
 ---
 
-## License
-
-This project is open source and available under the MIT License.
-
----
-
-Feel free to modify or extend the system to support multiple accounts, transaction history, or additional banking features!
+Feel free to use and modify this project as a learning tool for C# and Object Oriented Programming!
