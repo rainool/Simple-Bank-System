@@ -13,16 +13,14 @@ namespace BankSystem
         private string _name;
         private double _balance = 0.0;
 
-        
-        
         //Constructor
         public Account(string name, double balance)
         {
             this._name = name;
             this._balance = balance;
-        }   
+        }
 
-        
+
         //validation methods
         public bool validateDbl(string userInput)
         {
@@ -30,7 +28,7 @@ namespace BankSystem
         }
 
 
-        
+
         //methods
         public void deposit(string input)
         {
@@ -47,8 +45,8 @@ namespace BankSystem
             }
         }
 
-        
-        
+
+
         public void withdraw(string input)
         {
             double withdrawalAmount = Convert.ToDouble(input);
@@ -69,19 +67,25 @@ namespace BankSystem
             }
         }
 
-        
-        
+
+
         public void print()
         {
-            Console.WriteLine("Account Name: " + _name 
+            Console.WriteLine("Account Name: " + _name
                 + "\nAccount Balance: " + _balance.ToString("C", CultureInfo.GetCultureInfo("en-US")));
         }
 
-        
-        
+
+
         public string Name
         {
             get { return _name; }
+        }
+
+        public double Balance
+        {
+            get { return _balance; }
+            set { _balance = value; }
         }
     }
 }
